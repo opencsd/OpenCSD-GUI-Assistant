@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gui-assistant-apiserver
+  namespace: management-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: gui-assistant-apiserver
+      namespace: management-platform
+  template:
+    metadata:
+      labels:
+        name: gui-assistant-apiserver
+        namespace: management-platform
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: gui-assistant-apiserver
+          image: ketidevit2/gui-assistant-apiserver:v0.0.1
+          command:
+            - gui-assistant-apiserver
+          imagePullPolicy: Always
+          env:
+            - name: OPERATOR_NAME
+              value: "gui-assistant-apiserver"
+          volumeMounts:
+            - name: kube-config
+              mountPath: /root/.kube
+            - name: instance-yaml
+              mountPath: /mnt/instance-deploy
+            - name: docker-config
+              mountPath: /root/.docker
+      volumes:
+        - name: kube-config
+          hostPath:
+            type: Directory
+            path: /root/.kube
+        - name: instance-yaml
+          hostPath:
+            type: Directory
+            path: /root/workspace/keti/Instance-Deployments/deployments
+        - name: docker-config
+          hostPath:
+            type: Directory
+            path: /root/.docker
+      nodeSelector:
+        key: master
+      tolerations:
+        - key: node.kubernetes.io/not-ready
+          effect: NoExecute
+          tolerationSeconds: 0
+        - key: node.kubernetes.io/unreachable
+          effect: NoExecute
+          tolerationSeconds: 0
