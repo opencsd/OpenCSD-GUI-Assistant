@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opencsd-gui-assistant
+  namespace: management-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: opencsd-gui-assistant
+      namespace: management-controller
+  template:
+    metadata:
+      labels:
+        name: opencsd-gui-assistant
+        namespace: management-controller
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: opencsd-gui-assistant
+          image: ketidevit2/opencsd-gui-assistant:v0.0.1
+          imagePullPolicy: Always
+      nodeSelector:
+        key: master
