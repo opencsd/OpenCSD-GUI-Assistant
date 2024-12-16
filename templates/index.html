@@ -25,279 +25,191 @@
 		<div class="wrapper">
             <form action="" id="wizard">
         		<!-- SECTION 1 -->
-                <h2></h2>
-                <section>
-                    <div class="inner">
-						<div class="image-holder">
-							<img src="../static/images/image1.png" alt="">
-						</div>
-						<div class="form-content" >
-							<div class="form-header">
-								<h3>KETI GUI Assistant</h3>
-							</div>
-							<p>Choose your instance type</p>
+<h2></h2>
+<section>
+    <div class="inner">
+        <!-- Image Holder -->
+        <div class="image-holder">
+            <img src="../static/images/image1.png" alt="Database Configuration">
+        </div>
 
-                            <div class="form-row"></div>
-                            
-                            <div class="form-row">
-                                <label class="form-label" style="width: 200px;">Storage Type</label>
-                                <div class="form-holder">
-                                    <label class="form-selectgroup-item">
-                                    <input type="radio" name="dbms-type" value="opencsd" class="form-selectgroup-input dbms-type" checked/>
-                                    <span class="form-selectgroup-label d-flex align-items-center p-3">
-                                        <span class="form-selectgroup-label-content">
-                                            <span class="form-selectgroup-title strong mb-1">CSD</span>
-                                        </span>
-                                    </span>
-                                    </label>
-                                </div>
-                                <div class="form-holder">
-                                    <label class="form-selectgroup-item">
-                                    <input type="radio" name="dbms-type" value="mysql" class="form-selectgroup-input dbms-type"/>
-                                    <span class="form-selectgroup-label d-flex align-items-center p-3">
-                                        <span class="form-selectgroup-label-content">
-                                            <span class="form-selectgroup-title strong mb-1">SSD</span>
-                                        </span>
-                                    </span>
-                                    </label>
-                                </div>
-                            </div>
-                            
-							<div class="form-row">
-                                <label class="form-label" style="width: 200px;">Instance Name</label>
-                                <div class="form-holder w-100">
-                                    <input type="text" placeholder="instance name" class="form-control" name="instanceName">
-                                </div>
-							</div>
+        <!-- Form Content -->
+        <div class="form-content" style="display: block;">
+            <div class="form-header">
+                <h3>KETI GUI ASSISTANT</h3>
+            </div>
+            <p>Configure your database settings below</p>
+<!-- DB Type Selection -->
+<div class="form-row">
+    <label class="form-label" style="width: 200px;">DB Type</label>
+    <div class="form-holder">
+        <label class="form-selectgroup-item">
+            <input type="radio" name="dbmsType" value="OPENCSD" class="form-selectgroup-input db-type" checked>
+            <span class="form-selectgroup-label d-flex align-items-center p-3">
+                <span class="form-selectgroup-label-content">
+                    <span class="form-selectgroup-title strong mb-1">OpenCSD</span>
+                </span>
+            </span>
+        </label>
+    </div>
+    <div class="form-holder">
+        <label class="form-selectgroup-item">
+            <input type="radio" name="dbmsType" value="MYSQL" class="form-selectgroup-input db-type">
+            <span class="form-selectgroup-label d-flex align-items-center p-3">
+                <span class="form-selectgroup-label-content">
+                    <span class="form-selectgroup-title strong mb-1">MySQL</span>
+                </span>
+            </span>
+        </label>
+    </div>
+    <div class="form-holder">
+        <label class="form-selectgroup-item">
+            <input type="radio" name="dbmsType" value="GRAPHDB" class="form-selectgroup-input db-type">
+            <span class="form-selectgroup-label d-flex align-items-center p-3">
+                <span class="form-selectgroup-label-content">
+                    <span class="form-selectgroup-title strong mb-1">GraphDB</span>
+                </span>
+            </span>
+        </label>
+    </div>
+</div>
 
-                            <div class="form-row">
-                                <label class="form-label" style="width: 220px;">Instance Account</label>
-								<div class="form-holder">
-									<input id="instanceUser" type="text" placeholder="id" class="form-control">
-								</div>
-								<div class="form-holder">
-									<input id="instancePassword" type="password" placeholder="password" class="form-control">
-								</div>
-							</div>
-                            
-						</div>
-					</div>
-                </section>
+            <!-- Root Password -->
+            <div class="form-row">
+                <label class="form-label" style="width: 200px;">DB Root Password</label>
+                <div class="form-holder">
+                    <input type="password" id="dbRootPassword" placeholder="Root Password" class="form-control">
+                </div>
+            </div>
 
-				<!-- SECTION 2 -->
-                <h2></h2>
-                <section>
-                    <div class="inner">
-						<div class="image-holder">
-							<img src="../static/images/image1.png" alt="">
-						</div>
-                        <div class="form-content opencsd-form" style="display: block;">
-                            <div class="form-header">
-                                <h3>KETI GUI Assistant</h3>
-                            </div>
-                            <p>Fill with opencsd additional info</p>
-                            <div class="form-row">
-                                <div class="form-holder">
-                                    <label class="form-label">Volume Allocate</label>
-                                </div>
-                                <div class="form-holder">
-                                    <input type="text" id="csdVolumeAllocate"  value="1" placeholder="volume size" class="form-control">
-                                </div>
-                                <div class="form-holder">
-                                    <div class="select">
-                                        <div class="form-holder">
-                                            <div id="csdVolumeScale" class="select-control">GB</div>
-                                            <i class="zmdi zmdi-caret-down"></i>
-                                        </div>
-                                        <ul class="dropdown">
-                                            <li rel="MB">MB</li>
-                                            <li rel="GB">GB</li>
-                                            <li rel="TB">TB</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+            <!-- DB Name -->
+            <div class="form-row">
+                <label class="form-label" style="width: 200px;">DB Name</label>
+                <div class="form-holder">
+                    <input type="text" id="dbName" placeholder="Database Name" class="form-control">
+                </div>
+            </div>
 
-                            <div class="form-row">
-                                <label class="form-label" style="width: 160px;">CSD Count</label>
-                                <div class="form-holder">
-                                    <input type="number" name="csdCount" value="8" min="1" max="8" class="form-control">
-                                </div>
-                            </div>
-                        </div>
+            <!-- Instance Name -->
+            <div class="form-row">
+                <label class="form-label" style="width: 200px;">Instance Name</label>
+                <div class="form-holder">
+                    <input type="text" id="instanceName" placeholder="Instance Name" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-                        <div class="form-content mysql-form" style="display: none;">
-                            <div class="form-header">
-                                <h3>KETI GUI Assistant</h3>
-                            </div>
-                            <p>Fill with mysql additional info</p>
-                            <div class="form-row">
-                                <label class="form-label" style="width: 340px;">Volume Allocate</label>
-                                <div class="form-holder">
-                                    <input type="text" id="ssdVolumeAllocate" value="1" placeholder="volume size" class="form-control">
-                                </div>
-                                <div class="form-holder">
-                                    <div class="select">
-                                        <div class="form-holder">
-                                            <div id="ssdVolumeScale" class="select-control">GB</div>
-                                            <i class="zmdi zmdi-caret-down"></i>
-                                        </div>
-                                        <ul class="dropdown">
-                                            <li rel="MB">MB</li>
-                                            <li rel="GB">GB</li>
-                                            <li rel="TB">TB</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+<!-- SECTION 2 -->
+<h2></h2>
+<section>
+    <div class="inner">
+        <!-- Image Holder -->
+        <div class="image-holder">
+            <img src="../static/images/image1.png" alt="Node Configuration">
+        </div>
 
-                            <div class="form-row">
-                                <label class="form-label" style="width: 300px;">MySQL Root Password</label>
-								<div class="form-holder w-100">
-									<input id="rootpwd" type="password" placeholder="root password" class="form-control">
-								</div>
-							</div>
+        <!-- Form Content -->
+        <div class="form-content" style="display: block;">
+            <div class="form-header">
+                <h3>KETI GUI ASSISTANT</h3>
+            </div>
+            <p>Configure your node and volume settings below</p>
 
-                            <div class="form-row">
-                                <label class="form-label" style="width: 330px;">MySQL Account</label>
-								<div class="form-holder">
-									<input id="user" type="text" placeholder="user" class="form-control">
-								</div>
-								<div class="form-holder">
-									<input id="userpwd" type="password" placeholder="password" class="form-control">
-								</div>
-							</div>
-                        </div>
-					</div>
+            <!-- Operation Node -->
+            <div class="form-row">
+                <label class="form-label" style="width: 200px;">Operation Node</label>
+                <div class="form-holder">
+                    <select id="operationNode" class="form-control dropdown">
+                        <option value="" disabled selected>Select Operation Node</option>
+                        <!-- Options dynamically added via JavaScript -->
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <label class="form-label" style="width: 200px;">Storage Node</label>
+                <div class="form-holder">
+                    <select id="storageNode" class="form-control dropdown">
+                        <option value="" disabled selected>Select Storage Node</option>
+                        <!-- Options dynamically added via JavaScript -->
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <label class="form-label" style="width: 200px;">Volume</label>
+                <div class="form-holder">
+                    <select id="volume" class="form-control dropdown" disabled>
+                        <option value="" disabled selected>Select Volume</option>
+                        <!-- Options dynamically added via JavaScript -->
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- SECTION 3 -->
+<h2></h2>
+<section>
+    <div class="inner">
+        <!-- Image Holder -->
+        <div class="image-holder">
+            <img src="../static/images/image1.png" alt="Configuration Summary">
+        </div>
 
-                    
-                </section>
+        <!-- Form Content -->
+        <div class="form-content" style="display: block;">
+            <div class="form-header">
+                <h3>KETI GUI ASSISTANT</h3>
+            </div>
+            <p>Confirm your configuration details below</p>
 
-                <!-- SECTION 3 -->
-                <h2></h2>
-                <section>
-                    <div class="inner">
-						<div class="image-holder">
-							<img src="../static/images/image1.png" alt="">
-						</div>
-                        <div class="form-content opencsd-form" style="display: block;">
-                            <div class="form-header">
-                                <h3>KETI GUI Assistant</h3>
-                            </div>
-                            <p>Confirm Opencsd Instance Info</p>
-                            <div class="form-row">
-                                <label class="form-label" style="width: 180px;">DBMS Type</label>
-                                <div class="form-holder">
-                                    <label class="form-selectgroup-item">
-                                    <input type="radio" name="confirmDBMSType" value="opencsd" class="form-selectgroup-input" checked disabled/>
-                                    <span class="form-selectgroup-label d-flex align-items-center p-3">
-                                        <span class="form-selectgroup-label-content">
-                                            <span class="form-selectgroup-title strong mb-1">OpenCSD</span>
-                                        </span>
-                                    </span>
-                                    </label>
-                                </div>
-                                <div class="form-holder">
-                                    <label class="form-selectgroup-item">
-                                    <input type="radio" name="confirmDBMSType" value="mysql" class="form-selectgroup-input" disabled/>
-                                    <span class="form-selectgroup-label d-flex align-items-center p-3">
-                                        <span class="form-selectgroup-label-content">
-                                            <span class="form-selectgroup-title strong mb-1">MySQL</span>
-                                        </span>
-                                    </span>
-                                    </label>
-                                </div>
-                            </div>
+            <!-- Database Name and Instance Name (Same Row) -->
+            <div class="form-row d-flex">
+                <div class="form-holder" style="width: 50%; margin-right: 10px;">
+                    <label class="form-label">Database Name</label>
+                    <input type="text" id="selectedDBName" class="form-control" value="DefaultDBName" disabled>
+                </div>
+                <div class="form-holder" style="width: 50%;">
+                    <label class="form-label">Instance Name</label>
+                    <input type="text" id="selectedInstanceName" class="form-control" value="DefaultInstanceName" disabled>
+                </div>
+            </div>
 
-                            <div class="form-row">
-                                <div class="form-holder" style="width: 170px; margin-right: 0px;">
-                                    <label class="form-label">Instance Name</label>
-                                </div>
-                                <div class="form-holder w-100">
-                                    <input type="text" name="confirmInstanceName" class="form-control" disabled>
-                                </div>
-							</div>
+            <!-- Operation Node and Storage Node (Same Row) -->
+            <div class="form-row d-flex">
+                <div class="form-holder" style="width: 50%; margin-right: 10px;">
+                    <label class="form-label">Operation Node</label>
+                    <input type="text" id="selectedOperationNode" class="form-control" value="None" disabled>
+                </div>
+                <div class="form-holder" style="width: 50%;">
+                    <label class="form-label">Storage Node</label>
+                    <input type="text" id="selectedStorageNode" class="form-control" value="None" disabled>
+                </div>
+            </div>
 
-                            <div class="form-row">
-                                <div class="form-holder" style="width: 210px; margin-right: 0px;">
-                                    <label class="form-label">Volume Allocate</label>
-                                </div>
-                                <div class="form-holder" style="width: 200px; ">
-                                    <input type="text" name="confirmVolumeAllocate" class="form-control" disabled>
-                                </div>
-                                <div class="form-holder" style="width: 150px;  margin-right: 0px">
-                                    <label class="form-label">CSD Count</label>
-                                </div>
-                                <div class="form-holder" style="width: 150px;  margin-right: 0px;">
-                                    <input type="text" name="confirmCSDCount" class="form-control" disabled>
-                                </div>
-							</div>
-
-                            <div class="checkbox-circle mt-24">
-								<label>
-									<input id="opencsdValidator" type="checkbox" checked> Create validator with opencsd instance
-									<span class="checkmark"></span>
-								</label>
-							</div>
-                        </div>
-
-                        <div class="form-content mysql-form"style="display: none;">
-                            <div class="form-header">
-                                <h3>KETI GUI Assistant</h3>
-                            </div>
-                            <p>Confirm Mysql Info</p>
-                            <div class="form-row">
-                                <label class="form-label" style="width: 180px;">DBMS Type</label>
-                                <div class="form-holder">
-                                    <label class="form-selectgroup-item">
-                                    <input type="radio" value="opencsd" class="form-selectgroup-input dbms-type" disabled/>
-                                    <span class="form-selectgroup-label d-flex align-items-center p-3">
-                                        <span class="form-selectgroup-label-content">
-                                            <span class="form-selectgroup-title strong mb-1">OpenCSD</span>
-                                        </span>
-                                    </span>
-                                    </label>
-                                </div>
-                                <div class="form-holder">
-                                    <label class="form-selectgroup-item">
-                                    <input type="radio" value="mysql" class="form-selectgroup-input dbms-type" checked disabled/>
-                                    <span class="form-selectgroup-label d-flex align-items-center p-3">
-                                        <span class="form-selectgroup-label-content">
-                                            <span class="form-selectgroup-title strong mb-1">MySQL</span>
-                                        </span>
-                                    </span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-holder" style="width: 170px; margin-right: 0px;">
-                                    <label class="form-label">Instance Name</label>
-                                </div>
-                                <div class="form-holder w-100">
-                                    <input type="text" name="confirmInstanceName" class="form-control" disabled>
-                                </div>
-							</div>
-
-                            <div class="form-row">
-                                <div class="form-holder" style="width: 123px; margin-right: 0px;">
-                                    <label class="form-label">Volume Allocate</label>
-                                </div>
-                                <div class="form-holder" style="width: 150px; ">
-                                    <input type="text" name="confirmVolumeAllocate" class="form-control" disabled>
-                                </div>
-							</div>
-
-                            <div class="checkbox-circle mt-24">
-								<label>
-									<input id="mysqlValidator" type="checkbox" checked>  Create validator with mysql
-									<span class="checkmark"></span>
-								</label>
-							</div>
-                        </div>
-					</div>
-                </section>
+            <!-- Selected DB Type and Volume (Same Row) -->
+            <div class="form-row d-flex">
+                <div class="form-holder" style="width: 50%; margin-right: 10px;">
+                    <label class="form-label">Database Type</label>
+                    <input type="text" id="selectedDBType" class="form-control" value="OpenCSD" disabled>
+                </div>
+                <div class="form-holder" style="width: 50%;">
+                    <label class="form-label">Volume</label>
+                    <input type="text" id="selectedVolume" class="form-control" value="None" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
             </form>
 		</div>
+        <div id="successMessage" class="success-message" style="display: none;">
+            <h3 style="border: none; margin-bottom: 0px; font-family: 'Muli-SemiBold'; font-size: 30px; color: #453e79; text-transform: uppercase; letter-spacing: 7px; padding: 10px 20px; display: inline-block; background-color: #94c4ff; border-radius: 12px; text-align: center;">
+                Submitted Successfully!
+            </h3>
+        </div>
     </body>
 </html>

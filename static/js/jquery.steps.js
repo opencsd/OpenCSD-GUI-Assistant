@@ -266,75 +266,75 @@ function destroy(wizard, options)
     return wizardSubstitute;
 }
 
-/**
- * Triggers the onFinishing and onFinished event.
- *
- * @static
- * @private
- * @method finishStep
- * @param wizard {Object} The jQuery wizard object
- * @param state {Object} The state container of the current wizard
- **/
-function finishStep(wizard, state)
-{
-    var currentStep = wizard.find(".steps li").eq(state.currentIndex);
+// /**
+//  * Triggers the onFinishing and onFinished event.
+//  *
+//  * @static
+//  * @private
+//  * @method finishStep
+//  * @param wizard {Object} The jQuery wizard object
+//  * @param state {Object} The state container of the current wizard
+//  **/
+// function finishStep(wizard, state)
+// {
+//     var currentStep = wizard.find(".steps li").eq(state.currentIndex);
 
-    if (wizard.triggerHandler("finishing", [state.currentIndex]))
-    {
-        currentStep.addClass("done").removeClass("error");
-        wizard.triggerHandler("finished", [state.currentIndex]);
+//     if (wizard.triggerHandler("finishing", [state.currentIndex]))
+//     {
+//         currentStep.addClass("done").removeClass("error");
+//         wizard.triggerHandler("finished", [state.currentIndex]);
         
-        if(dbmsType == "mysql"){
-            fetch('/create', {
-                method: 'POST',
-                mode: 'cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                redirect: 'follow',
-                body: JSON.stringify({
-                    "dbms_type": dbmsType,
-                    "instance_name": $('input[name=confirmInstanceName]').val(),
-                    "instance_user": $('#instanceUser').val(),
-                    "instance_password": $('#instancePassword').val(),
-                    "volume": $('input[name=confirmVolumeAllocate]').val(),
-                    "root_password": $('#rootpwd').val(),
-                    "dbms_user": $('#user').val(),
-                    "dbms_password": $('#userpwd').val(),
-                    "create_validator": $('#mysqlValidator').is(':checked')
-                })
-            })
-            .then(response => response)
-        }else{
-            fetch('/create', {
-                method: 'POST',
-                mode: 'cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                redirect: 'follow',
-                body: JSON.stringify({
-                    "dbms_type": dbmsType,
-                    "instance_name": $('input[name=confirmInstanceName]').val(),
-                    "instance_user": $('#instanceUser').val(),
-                    "instance_password": $('#instancePassword').val(),
-                    "volume": $('input[name=confirmVolumeAllocate]').val(),
-                    "csd_count": $('input[name=confirmCSDCount]').val(),
-                    "create_validator": $('#opencsdValidator').is(':checked')
-                })
-            })
-            .then(response => response)
-        }
+//         if(dbmsType == "mysql"){
+//             fetch('/create', {
+//                 method: 'POST',
+//                 mode: 'cors',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                 },
+//                 redirect: 'follow',
+//                 body: JSON.stringify({
+//                     "dbms_type": dbmsType,
+//                     "instance_name": $('input[name=confirmInstanceName]').val(),
+//                     "instance_user": $('#instanceUser').val(),
+//                     "instance_password": $('#instancePassword').val(),
+//                     "volume": $('input[name=confirmVolumeAllocate]').val(),
+//                     "root_password": $('#rootpwd').val(),
+//                     "dbms_user": $('#user').val(),
+//                     "dbms_password": $('#userpwd').val(),
+//                     "create_validator": $('#mysqlValidator').is(':checked')
+//                 })
+//             })
+//             .then(response => response)
+//         }else{
+//             fetch('/create', {
+//                 method: 'POST',
+//                 mode: 'cors',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                 },
+//                 redirect: 'follow',
+//                 body: JSON.stringify({
+//                     "dbms_type": dbmsType,
+//                     "instance_name": $('input[name=confirmInstanceName]').val(),
+//                     "instance_user": $('#instanceUser').val(),
+//                     "instance_password": $('#instancePassword').val(),
+//                     "volume": $('input[name=confirmVolumeAllocate]').val(),
+//                     "csd_count": $('input[name=confirmCSDCount]').val(),
+//                     "create_validator": $('#opencsdValidator').is(':checked')
+//                 })
+//             })
+//             .then(response => response)
+//         }
 
-        alert("Instance Create Success");
-        // initialize.apply($('#wizard'), arguments);
-        // $('#wizard').initialize(arguments);
-    }
-    else
-    {
-        currentStep.addClass("error");
-    }
-}
+//         alert("Instance Create Success");
+//         // initialize.apply($('#wizard'), arguments);
+//         // $('#wizard').initialize(arguments);
+//     }
+//     else
+//     {
+//         currentStep.addClass("error");
+//     }
+// }
 
 /**
  * Gets or creates if not exist an unique event namespace for the given wizard instance.
@@ -823,8 +823,7 @@ function paginationClick(wizard, options, state, index)
  * @event click
  * @param event {Object} An event object
  */
-function paginationClickHandler(event)
-{
+function paginationClickHandler(event) {
     event.preventDefault();
 
     var anchor = $(this),
@@ -833,14 +832,14 @@ function paginationClickHandler(event)
         state = getState(wizard),
         href = anchor.attr("href");
 
-    switch (href.substring(href.lastIndexOf("#") + 1))
-    {
+    switch (href.substring(href.lastIndexOf("#") + 1)) {
         case "cancel":
             cancel(wizard);
             break;
 
         case "finish":
-            finishStep(wizard, state);
+            // Trigger the "finished" event for #wizard
+            wizard.trigger("finished", state);
             break;
 
         case "next":
