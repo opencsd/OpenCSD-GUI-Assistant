@@ -1,1 +1,1 @@
-pull ㅇㅅㅇ
+pull 
