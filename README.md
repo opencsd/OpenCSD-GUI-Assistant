@@ -25,6 +25,9 @@ KETI-Web-Workbench enables users to monitor databases, perform query pushdown, a
 -------------
 ```bash
 git clone
+cd OpenCSD-GUI-Assistant
+./1.build.sh
+./2.create.sh
 python3 main.py
 ```
 
